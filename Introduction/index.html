@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Introduction - VB-0693 Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "Introduction.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> VB-0693 Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Introduction</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#introduction">INTRODUCTION</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#ur5-arms">UR5 Arms</a></li>
+        
+            <li><a class="toctree-l3" href="#cameras">Cameras</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../Implementation/">Implementation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../RQT_Graph/">RQT Graph</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">VB-0693 Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="introduction"><em>INTRODUCTION</em></h1>
+<hr />
+<p>The theme for our project was Vargi bots. In this theme we are picking pakages from a shelf and segregating them into their respective bins. The task is carried out with two UR5 arms, two logical cameras, one 2D camera and conveyor belt. </p>
+<ul>
+<li>
+<h4 id="ur5-arms">UR5 Arms</h4>
+</li>
+</ul>
+<p>These are used to carry out the pick and place functions. The packages are kept in a shelf from which they are supposed to be picked upon receiving an order. The picked package is then placed on the conveyor belt and sent towards the other Arm. The most important part to focus for this arm was the precision with which it would pick the package. The chances of collisions with external objects were high. If the package is not properly attached to the Vaccum Gripper it may collide with the shelf or other packages in it. Hence the trajectory set is such that it picks the package from the shelf and places it on the conveyor belt without any collision. It also ensures that the package is in perfect alignment with the vaccum gripper before it is turned on.</p>
+<p><img alt="" src="../Introduction.assets/Screenshot from 2021-02-19 15-51-14-1613732061344.png" /></p>
+<p>The second UR5 Arm picks the packages from the conveyor belt and drops them into their respective bins. The chances of collisions are the greates in UR5 arms. We have tried our best to set a trajectory that would avoid any collision of the arm, with or without the package. While doing this we have not neglected the fact that time taken in making the drop is just as crucial. the trajectory used is collision free and the shortest one possible.</p>
+<ul>
+<li>
+<h4 id="cameras">Cameras</h4>
+</li>
+</ul>
+<p>The colour and QR code decoding(Computer Vision techniques) is done by the 2D camera located in front of the shelf, behind the first UR5 arm. This arm is responsible for recognizing the colour of the package and hence its priority. After receiving the order, this camera is used to ensure we have picked the right package.</p>
+<p><img alt="Screenshot from 2021-02-19 15-50-07" src="../Introduction.assets/Screenshot from 2021-02-19 15-50-07.png" /></p>
+<p>The two logical cameras are located above the conveyor belt in front of each UR5 arm. These cameras give only the package name ie., package001 etc. These cameras have been used by us to co-ordinate between the two UR5 arms as well as keeping a record of number of packages picked by the second arm. </p>
+<p><img alt="" src="../Introduction.assets/Screenshot from 2021-02-19 15-52-36-1613732235350.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Implementation/" class="btn btn-neutral float-right" title="Implementation">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+        <span style="margin-left: 15px"><a href="../Implementation/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
