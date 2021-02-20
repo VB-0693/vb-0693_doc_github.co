@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Introduction - Task-5 Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Introduction";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Task-5 Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Introduction</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#abstract">Abstract</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#ur5-arms">UR5 Arms</a></li>
+        
+            <li><a class="toctree-l3" href="#cameras">Cameras</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#implementation">Implementation</a></li>
+    
+
+    <li class="toctree-l2"><a href="#rqt-graph">RQT Graph</a></li>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Task-5 Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Introduction</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="abstract"><strong><em>Abstract</em></strong></h1>
+<hr />
+<p>Inspired by this visualisation of Industry 4.0, the current edition of the e-Yantra Robotics Competition features a theme called ‘Vargi-Bots’. Vargi is taken from a Sanskrit word, Vargikaran (वर्गीकरण) which means to separate objects based on their category. The theme is set in the abstraction of a warehouse management system designed in Gazebo, which is a 3D dynamic simulator used to efficiently simulate robots in complex environments.</p>
+<p>The arena is an automated warehouse setting where essential packages are required to be sent out to different parts of a city. Since Industry 4.0 heavily focuses on automation here the warehouse will only consist of two industrial robotic arms which will be used by the teams. As the requirements are sent to the warehouse, one robotic arm will identify the packages from a shelf and place them on a conveyor belt and the other robotic arm at the end of the conveyor belt will pick these objects from the conveyor and place them into bins. Each bin represents a destination for the package. As the packages are sent out from the warehouse there will also be alerts sent to the user via email notifying them about the package being shipped from the warehouse.</p>
+<p>The packages to be delivered have their own priorities. Packages having a higher priority are intended for a natural disaster or a pandemic situation. Other packages with lower priorities are for general purposes. Similar to a conductor in an orchestra, in this theme, the participants have to design their own conductor (controller) for their warehouse to make smart decisions in order to deliver high priority packages as quickly as possible.</p>
+<hr />
+<ul>
+<li>
+<h4 id="ur5-arms">UR5 Arms</h4>
+</li>
+</ul>
+<p>These are used to carry out the pick and place functions. The packages are kept in a shelf from which they are supposed to be picked upon receiving an order. The picked package is then placed on the conveyor belt and sent towards the other Arm. The most important part to focus for this arm was the precision with which it would pick the package. The chances of collisions with external objects were high. If the package is not properly attached to the Vaccum Gripper it may collide with the shelf or other packages in it. Hence the trajectory set is such that it picks the package from the shelf and places it on the conveyor belt without any collision. It also ensures that the package is in perfect alignment with the vaccum gripper before it is turned on.</p>
+<p><img alt="" src="Introduction.assets/Screenshot from 2021-02-19 15-51-14-1613732061344.png" /></p>
+<p>The second UR5 Arm picks the packages from the conveyor belt and drops them into their respective bins. The chances of collisions are the greates in UR5 arms. We have tried our best to set a trajectory that would avoid any collision of the arm, with or without the package. While doing this we have not neglected the fact that time taken in making the drop is just as crucial. the trajectory used is collision free and the shortest one possible.</p>
+<ul>
+<li>
+<h4 id="cameras">Cameras</h4>
+</li>
+</ul>
+<p>The colour and QR code decoding(Computer Vision techniques) is done by the 2D camera located in front of the shelf, behind the first UR5 arm. This arm is responsible for recognizing the colour of the package and hence its priority. After receiving the order, this camera is used to ensure we have picked the right package.</p>
+<p><img alt="Screenshot from 2021-02-19 15-50-07" src="Introduction.assets/Screenshot from 2021-02-19 15-50-07.png" /></p>
+<p>The two logical cameras are located above the conveyor belt in front of each UR5 arm. These cameras give only the package name ie., package001 etc. These cameras have been used by us to co-ordinate between the two UR5 arms as well as keeping a record of number of packages picked by the second arm. </p>
+<p><img alt="" src="Introduction.assets/Screenshot from 2021-02-19 15-52-36-1613732235350.png" /></p>
+<hr />
+<h1 id="implementation"><strong><em>Implementation</em></strong></h1>
+<ol>
+<li>
+<p>The task begins with starting the Gazebo Environment along with Rviz. Gazebo is the environment where the entire simulation would take place while Rviz is the window that we have used to monitor the movement of the UR5 arms and the collisions of various elements used in this task.</p>
+</li>
+<li>
+<p>The first component to get activated is the 2D camera (Cam1 in our codes). This camera detects not only the number of packages but also their QR codes from where we can get the details of the package (Item, SKU, location, Priority etc.)</p>
+</li>
+<li>
+<p>This camera is then to detect 9 of 12 packages, instead of which we have opted to detect all 12 of the packages in the shelf. The reason to detect all packages was to get the location of all packages and trying out faster trajectories by trial and error.  </p>
+</li>
+<li>
+<p>As soon as the packages are detected the IMS Inventory sheet is updated of all the detected packages. This is done by subscribing to the MQTT client. MQTT client publishes the data to the Inventory sheet displaying the Timestamp and details of the package scanned from the 2D camera.</p>
+</li>
+<li>
+<p>A total of 9 orders are published after one minute of Simulation time, each republished on a unique ID. These orders are published randomly and at various intervals of time. The orders are sorted as the priority as soon as they are received.  </p>
+</li>
+<li>
+<p>Then we process the orders according to the priority order (Red- Yellow- Green) and place the corresponding packages on the conveyor. Here, Logical Camera_1 placed at the top of the conveyor belt registers the package being placed as well but we have not made much use of this camera for our code.</p>
+</li>
+<li>
+<p>Once the package is placed on the conveyor belt by UR5_1 the ‘Order Dispatched’ sheet is updated and an Email of the order being dispatched is sent. This sheet is also a part of the IMS. The email address used for this task is the team ID account we have created for E-Yantra.</p>
+</li>
+<li>
+<p>The package placed on the conveyor belt is then picked by UR5_2 once it comes into the field of vision of Logical Camera_2. As soon as this camera registers the package arriving the conveyor belt is stopped till UR5_2 has picked up the package.  </p>
+</li>
+<li>
+<p>It then gets sorted into its respective bin followed by another email being sent of the order getting delivered.</p>
+</li>
+<li>
+<p>Additionally, the ‘Order Shipped’ sheet is update in the IMS which keeps track of all the orders shipped and their time.</p>
+</li>
+<li>
+<p>The WMS sheet is update simultaneously throughout the task which acts as a Summary sheet of the IMS also called the Dashboard. This used to reflect on the real-time values.</p>
+<hr />
+<h1 id="rqt-graph">RQT Graph</h1>
+<p><img alt="" src="index.assets/rosgraph.png" /></p>
+</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2021-02-20 13:56:20
+-->
